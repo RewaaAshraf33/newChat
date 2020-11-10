@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "257656131943",
+    "firebase_url": "https://fir-app-68376.firebaseio.com",
+    "project_id": "fir-app-68376",
+    "storage_bucket": "fir-app-68376.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257656131943:android:4dae1ba4a72c505b90dfc2",
+        "android_client_info": {
+          "package_name": "com.example.mychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257656131943-t86js9t3v63kq04n3ih7bfif86cufl0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALRN4EK8Dnxz-CfKcVXPI8uGOHva28nNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257656131943-t86js9t3v63kq04n3ih7bfif86cufl0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
