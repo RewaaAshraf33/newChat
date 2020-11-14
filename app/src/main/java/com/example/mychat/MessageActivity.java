@@ -2,9 +2,12 @@ package com.example.mychat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +22,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class MessageActivity extends AppCompatActivity {
 
     TextView username;
     ImageView imageView;
+    ImageButton btn_send;
+    EditText text_send;
     FirebaseUser fuser;
     DatabaseReference reference;
     Intent intent;
@@ -50,59 +57,64 @@ public class MessageActivity extends AppCompatActivity {
             //}
 //        });
 
-       intent=getIntent();
+        intent=getIntent();
 
 
-       String userid= intent.getStringExtra("userid");
 
-
-       fuser = FirebaseAuth.getInstance().getCurrentUser();
-
-       reference = FirebaseDatabase.getInstance().getReference("MyUsers").child(userid);
-
-       reference.addValueEventListener(new ValueEventListener() {
+        final String userid = intent.getStringExtra("userid");
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+        btn_send.setOnClickListener(new View.OnClickListener(){
            @Override
-           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               Users user =dataSnapshot .getValue(Users.class);
-               username.setText(user.getUsername());
-
-               if (user.getImageURL().equals("default"))
-               {
-                   imageView.setImageResource(R.mipmap.ic_launcher);
-
-               }else {
-                   Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
-
+           public void onClick(View v){
+               String msg = text_send.getText().toString();
+               if(!msg.equals("")){
+                   sendMessage(fuser.getUid(), userid, msg);
+               } else {
+                   Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                }
-
-
-
-           }
-
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
+               text_send.setText("");
 
            }
-       });
+        });
+
+        imageView = findViewById(R.id.imageView);
+        fuser = FirebaseAuth.getInstance().getCurrentUser();
+
+        reference = FirebaseDatabase.getInstance().getReference("MyUsers").child(userid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Users user =dataSnapshot .getValue(Users.class);
+                username.setText(user.getUsername());
+
+                if (user.getImageURL().equals("default"))
+                {
+                    imageView.setImageResource(R.mipmap.ic_launcher);
+
+                }else {
+                    Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
+
+                }
 
 
 
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+        });
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
+    private void sendMessage(String sender, String receiver, String message){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", sender);
+        hashMap.put("receiver", receiver);
+        hashMap.put("message", message);
+
+        reference.child("Chats").push().setValue(hashMap);
     }
 }
