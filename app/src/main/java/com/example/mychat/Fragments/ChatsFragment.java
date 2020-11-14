@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mychat.ChatActivity;
 import com.example.mychat.Model.Users;
 import com.example.mychat.R;
 import com.google.firebase.auth.FirebaseAuth;
