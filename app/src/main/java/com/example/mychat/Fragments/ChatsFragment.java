@@ -1,11 +1,13 @@
 package com.example.mychat.Fragments;
 
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,8 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ChatsFragment extends Fragment {
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+public class ChatsFragment extends Fragment {
 
         private View PrivateChatsView;
         private RecyclerView chatsList;
@@ -52,7 +56,7 @@ public class ChatsFragment extends Fragment {
             UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
-            chatsList = (RecyclerView) PrivateChatsView.findViewById(R.id.chatslist);
+            chatsList = (RecyclerView) PrivateChatsView.findViewById(R.id.chats_list);
             chatsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
@@ -66,10 +70,10 @@ public class ChatsFragment extends Fragment {
             super.onStart();
 
 
-            FirebaseRecyclerOptions<Users> options =
-                    new FirebaseRecyclerOptions.Builder<Users>()
-                            .setQuery(ChatsRef, Users.class)
-                            .build();
+            FirebaseRecyclerOptions<Users> options;
+            options = new FirebaseRecyclerOptions.Builder<Users>()
+                    .setQuery(ChatsRef, Users.class)
+                    .build();
 
 
             FirebaseRecyclerAdapter<Users, ChatsViewHolder> adapter =
@@ -89,7 +93,7 @@ public class ChatsFragment extends Fragment {
                                         if (dataSnapshot.hasChild("image"))
                                         {
                                             retImage[0] = dataSnapshot.child("image").getValue().toString();
-                                            Picasso.get().load(retImage[0]).into(holder.profileImage);
+
                                         }
 
                                         final String retName = dataSnapshot.child("name").getValue().toString();
@@ -157,7 +161,7 @@ public class ChatsFragment extends Fragment {
 
         public static class  ChatsViewHolder extends RecyclerView.ViewHolder
         {
-            CircleImageView profileImage;
+            ImageView  profileImage;
             TextView userStatus, userName;
 
 
@@ -171,15 +175,3 @@ public class ChatsFragment extends Fragment {
             }
         }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
