@@ -24,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class UsersFragment extends Fragment {
 
 private RecyclerView recyclerView ;
@@ -80,25 +79,6 @@ userAdabter=new UserAdabter(getContext(),mUsers);
         });
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
