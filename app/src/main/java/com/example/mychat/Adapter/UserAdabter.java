@@ -48,7 +48,7 @@ private List<Users>mUsers;
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
 
-        Users users=mUsers.get(position);
+        Users users = mUsers.get(position);
         holder.username.setText(users.getUsername());
         //////////////////////وقفت هناااااااااااااااااااا
 if (users.getImageURL().equals("default"))

@@ -30,9 +30,9 @@ private RecyclerView recyclerView ;
 private UserAdabter userAdabter;
 private List<Users> mUsers;
 
-    public UsersFragment() {
+  //  public UsersFragment() {
         // Required empty public constructor
-    }
+   // }
 
 
 
@@ -59,18 +59,18 @@ private List<Users> mUsers;
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren() )
-                {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren() ) {
                     Users user = snapshot.getValue(Users.class);
                     assert user != null;
-                    if (!user.getId().equals(firebaseUser.getUid())){
+                    if (!user.getId().equals(firebaseUser.getUid())) {
                         mUsers.add(user);
                     }
-userAdabter=new UserAdabter(getContext(),mUsers);
-                    recyclerView.setAdapter(userAdabter);
+                }
+                        userAdabter=new UserAdabter(getContext(),mUsers);
+                        recyclerView.setAdapter(userAdabter);
 
                 }
-            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

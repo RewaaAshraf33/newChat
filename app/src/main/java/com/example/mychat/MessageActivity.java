@@ -38,11 +38,11 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_chat);
 
 
-        imageView =findViewById(R.id.imageview_profile);
-        username = findViewById(R.id.usernamey);
+        imageView =findViewById(R.id.imageView);
+        username = findViewById(R.id.username);
 
 
         //Toolbar
@@ -93,12 +93,9 @@ public class MessageActivity extends AppCompatActivity {
                     imageView.setImageResource(R.mipmap.ic_launcher);
 
                 }else {
+
                     Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
-
                 }
-
-
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
