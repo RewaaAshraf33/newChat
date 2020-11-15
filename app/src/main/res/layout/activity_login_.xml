@@ -64,7 +64,7 @@
         android:textColor="@color/white"
         android:textColorHighlight="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttom"
+        app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText3"
@@ -72,7 +72,7 @@
 
 
     <Button
-        android:id="@+id/buttom"
+        android:id="@+id/loginBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

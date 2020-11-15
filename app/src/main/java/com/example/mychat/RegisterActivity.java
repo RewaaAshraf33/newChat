@@ -36,15 +36,16 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Register");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("Register");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Initializing widgets
         userET = findViewById(R.id.userEditText);
         passET = findViewById(R.id.passEditText);
         emailET = findViewById(R.id.emailEditText);
         registerBtn = findViewById(R.id.buttonRegister);
+
         auth = FirebaseAuth.getInstance();
 
         //adding event listener to Button Register
