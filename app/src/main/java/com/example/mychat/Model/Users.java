@@ -4,7 +4,7 @@ public class Users {
 
 private String id;
 private String username;
-private  String imageURL;
+private String imageURL;
  //constructors
           public Users(){
 
@@ -20,11 +20,13 @@ private  String imageURL;
 
 
     public String getId() {
-        return id;
+
+              return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String id)
+    {
+        this.id =  id;
     }
 
     public String getUsername() {

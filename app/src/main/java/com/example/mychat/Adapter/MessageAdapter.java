@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-//import de.hdodenhof.circleimageview.CircleImageView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>
 {

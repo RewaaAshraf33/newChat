@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="user_profile_name" type="id" />
-    <item name="user_status" type="id" />
-    <item name="users_profile_image" type="id" />
+    <item name="user_profile_name" type="id"/>
+    <item name="user_status" type="id"/>
+    <item name="users_profile_image" type="id"/>
+    <item name="sender_messsage_text" type="id"></item>
+    <item name="receiver_message_text" type="id"></item>
+    <item name="private_messages_list_of_users" type="id" />
 </resources>

@@ -46,7 +46,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
         //Toolbar
-      //  Toolbar toolbar =findViewById(R.id.toolbar2);
+        //Toolbar toolbar =findViewById(R.id.toolbar2);
         //setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);

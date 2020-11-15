@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -111,8 +112,9 @@ public class ChatActivity extends AppCompatActivity
 
     private void IntializeControllers()
     {
-        ChatToolBar = (Toolbar) findViewById(R.id.chat_toolbar);
+        ChatToolBar = (Toolbar) findViewById(R.id.main_app_bar);
         setSupportActionBar(ChatToolBar);
+
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -127,7 +129,7 @@ public class ChatActivity extends AppCompatActivity
         userImage = (ImageView) findViewById(R.id.custom_profile_image);
 
         SendMessageButton = (ImageButton) findViewById(R.id.send_message_btn);
-        SendFilesButton = (ImageButton) findViewById(R.id.send_files_btn);
+        //SendFilesButton = (ImageButton) findViewById(R.id.send_files_btn);
         MessageInputText = (EditText) findViewById(R.id.input_message);
 
         messageAdapter = new MessageAdapter(messagesList);
@@ -146,6 +148,9 @@ public class ChatActivity extends AppCompatActivity
         saveCurrentTime = currentTime.format(calendar.getTime());
     }
 
+    private void setSupportActionBar(Toolbar chatToolBar) {
+
+    }
 
 
     private void DisplayLastSeen()
@@ -276,7 +281,8 @@ public class ChatActivity extends AppCompatActivity
         }
     }
 
-    public void setSupportActionBar(Toolbar supportActionBar) {
-        this.supportActionBar = supportActionBar;
-    }
+   // public void setSupportActionBar(Toolbar supportActionBar) {
+    //    this.supportActionBar = supportActionBar;
+
+    //}
 }
