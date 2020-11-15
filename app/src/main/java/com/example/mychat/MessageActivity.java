@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.mychat.Model.Users;
@@ -46,16 +47,15 @@ public class MessageActivity extends AppCompatActivity {
 
 
         //Toolbar
-        //Toolbar toolbar =findViewById(R.id.toolbar2);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-          //  @Override
-            //public void onClick(View v) {
-                
-            //}
-//        });
+        Toolbar toolbar =findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
         intent=getIntent();
 
