@@ -28,8 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
-
     //create firebase objects and inistance
     FirebaseUser firebaseUser;
     DatabaseReference myRef;
@@ -41,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         //........................
-        myRef= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        myRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Users users =dataSnapshot.getValue(Users.class);
+                Users users = dataSnapshot.getValue(Users.class);
             }
 
             @Override
@@ -56,26 +54,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         ///  Tab layout and view pager
-        TabLayout tabLayout=findViewById(R.id.tabLayout);
-        ViewPager viewPager =findViewById(R.id.view_pager);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        ViewPager viewPager = findViewById(R.id.view_pager);
 
-        ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-       viewPagerAdapter.addFragment(new ChatsFragment(),"Chats");
-        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
-
+        viewPagerAdapter.addFragment(new ChatsFragment(), "Chats");
+        viewPagerAdapter.addFragment(new UsersFragment(), "Users");
 
         viewPager.setAdapter(viewPagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
-
-
-
-
-
-
     }
   //Adding logout functionality
 
@@ -88,15 +78,9 @@ public class MainActivity extends AppCompatActivity {
        // return super.onCreateOptionsMenu(menu);
     }
 
-
-    //////////////////////////////
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         // if user click on logout button
-
     switch (item.getItemId()){
 
         case R.id.logout:
@@ -104,14 +88,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,Login_Activity.class));
             finish();
             return true;
-
-
-
     }
 
    return false;
-
-
     }
 
     // class viewpager adaptor
@@ -129,37 +108,32 @@ public class MainActivity extends AppCompatActivity {
 
        }
 
-     @NonNull
-     @Override
-     public Fragment getItem(int position) {
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
          return fragments.get(position);
      }
 
 
-     @Override
-     public int getCount() {
+        @Override
+        public int getCount() {
 
-           return fragments.size();
-     }
+            return fragments.size();
+        }
 
+        public  void addFragment(Fragment fragment, String title)
+        {
+            fragments .add(fragment);
+            titles.add(title);
+        }
 
-     public  void addFragment(Fragment fragment, String title)
-     {
-          fragments .add(fragment);
-          titles.add(title);
-     }
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
 
-     @Nullable
-     @Override
-     public CharSequence getPageTitle(int position) {
-
-           return titles.get(position);
-     }
- }
-
-
-
-
+            return titles.get(position);
+        }
+    }
 }
 
 
