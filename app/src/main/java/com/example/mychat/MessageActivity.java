@@ -47,15 +47,15 @@ public class MessageActivity extends AppCompatActivity {
 
 
         //Toolbar
-        Toolbar toolbar =findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        //Toolbar toolbar =findViewById(R.id.toolbar);
+       //setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+         //   @Override
+        //    public void onClick(View v) {
+        //    }
+        //});
 
         intent=getIntent();
 
@@ -63,19 +63,8 @@ public class MessageActivity extends AppCompatActivity {
 
         final String userid = intent.getStringExtra("userid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        btn_send.setOnClickListener(new View.OnClickListener(){
-           @Override
-           public void onClick(View v){
-               String msg = text_send.getText().toString();
-               if(!msg.equals("")){
-                   sendMessage(fuser.getUid(), userid, msg);
-               } else {
-                   Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
-               }
-               text_send.setText("");
 
-           }
-        });
+        btn_send= findViewById(R.id.send_message_btn);
 
         imageView = findViewById(R.id.imageView);
         fuser = FirebaseAuth.getInstance().getCurrentUser();
@@ -88,17 +77,30 @@ public class MessageActivity extends AppCompatActivity {
                 Users user =dataSnapshot .getValue(Users.class);
                 username.setText(user.getUsername());
 
-                if (user.getImageURL().equals("default"))
-                {
-                    imageView.setImageResource(R.mipmap.ic_launcher);
+                //if (user.getImageURL().equals("default"))
+                //{
+                //    imageView.setImageResource(R.mipmap.ic_launcher);
 
-                }else {
+                //}else {
 
-                    Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
-                }
+                 //   Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
+                 //}
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        btn_send.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String msg = text_send.getText().toString();
+                if(!msg.equals("")){
+                    sendMessage(fuser.getUid(), userid, msg);
+                } else {
+                    Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
+                }
+                text_send.setText("");
 
             }
         });
@@ -114,4 +116,5 @@ public class MessageActivity extends AppCompatActivity {
 
         reference.child("Chats").push().setValue(hashMap);
     }
+
 }

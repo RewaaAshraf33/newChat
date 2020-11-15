@@ -10,9 +10,9 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="407dp"
-        android:layout_height="59dp"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginBottom="675dp"
         android:background="@color/teal_200"
         android:minHeight="?attr/actionBarSize"
@@ -21,16 +21,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="100dp"
         android:gravity="clip_vertical|start"
         android:text="@string/textview" />
-
 
     <RelativeLayout
         android:id="@+id/chat_linear_layout"
@@ -38,19 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="-14dp"
         android:background="@android:color/background_light"
-        android:orientation="horizontal"
-        >
-
-        <EditText
-            android:id="@+id/input_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="0dp"
-            android:layout_toStartOf="@+id/send_message_btn"
-            android:hint="Type message here..."
-            android:maxLines="5"
-            android:padding="15dp" />
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/send_message_btn"
@@ -60,6 +50,24 @@
             android:backgroundTint="@color/teal_200"
             android:src="@android:drawable/ic_menu_send" />
 
+        <EditText
+            android:id="@+id/input_message"
+            android:layout_width="346dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="8dp"
+            android:hint="Type message here..."
+            android:maxLines="5"
+            android:padding="15dp" />
+
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </RelativeLayout>
