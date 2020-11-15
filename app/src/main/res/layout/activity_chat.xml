@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="675dp"
-        android:background="@color/teal_200"
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:layout_marginStart="100dp"
+        android:textSize="30dp"
         android:gravity="clip_vertical|start"
         android:text="@string/textview" />
 
@@ -38,7 +39,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="1dp"
-        android:layout_marginBottom="-14dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         android:orientation="horizontal">
 
