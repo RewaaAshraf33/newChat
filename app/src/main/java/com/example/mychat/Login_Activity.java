@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,18 +50,16 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_);
 
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("Login");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        userETLogin = findViewById(R.id.userEditText);
-        passETlogin = findViewById(R.id.passEditText);
-        loginBtn =findViewById(R.id.loginBtn);
+        userETLogin = findViewById(R.id.editText);
+        passETlogin = findViewById(R.id.editText3);
+        loginBtn =findViewById(R.id.buttom);
         RegisterBtn= findViewById(R.id.registerBtn);
 
         //firebase Auth
       auth = FirebaseAuth.getInstance();
+
+
+
 
       //Register button
 
@@ -74,16 +71,22 @@ public class Login_Activity extends AppCompatActivity {
           }
       });
 
+
+
+
+
+
       //login button
       loginBtn.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
 
-              String user_text= userETLogin.getText().toString();
+             String email_text= userETLogin.getText().toString();
+
               String pass_text= passETlogin.getText().toString();
 
               //checking if it is empty
-              if (TextUtils.isEmpty(user_text)||TextUtils.isEmpty(pass_text)){
+              if (TextUtils.isEmpty(email_text)||TextUtils.isEmpty(pass_text)){
 
 
                   Toast.makeText(Login_Activity.this,"Please fill the fields",Toast.LENGTH_SHORT);
@@ -91,7 +94,7 @@ public class Login_Activity extends AppCompatActivity {
       }
               else {
 
-                  auth.signInWithEmailAndPassword(user_text,pass_text)
+                  auth.signInWithEmailAndPassword(email_text,pass_text)
                   .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                       @Override
                       public void onComplete(@NonNull Task<AuthResult> task) {
