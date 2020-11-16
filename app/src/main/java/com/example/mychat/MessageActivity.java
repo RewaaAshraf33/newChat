@@ -2,6 +2,7 @@ package com.example.mychat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -32,6 +33,7 @@ public class MessageActivity extends AppCompatActivity {
     ImageView imageView;
     ImageButton btn_send;
     EditText text_send;
+    EditText msg_editText;
     FirebaseUser fuser;
     DatabaseReference reference;
     Intent intent;
@@ -45,18 +47,8 @@ public class MessageActivity extends AppCompatActivity {
 
         imageView =findViewById(R.id.imageView);
         username = findViewById(R.id.username);
-
-
-        //Toolbar
-        //Toolbar toolbar =findViewById(R.id.toolbar);
-       //setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-         //   @Override
-        //    public void onClick(View v) {
-        //    }
-        //});
+        btn_send = findViewById(R.id.send_message_btn);
+        //msg_editText = findViewById(R.id.sender_messsage_text);
 
         intent=getIntent();
 
@@ -107,13 +99,13 @@ public class MessageActivity extends AppCompatActivity {
         });
     }
 
-    private void sendMessage(String sender, String receiver, String message){
+    private void sendMessage(String sender, String receiver, String MessageID){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
         hashMap.put("receiver", receiver);
-        hashMap.put("message", message);
+        hashMap.put("message", MessageID);
 
         reference.child("Chats").push().setValue(hashMap);
     }

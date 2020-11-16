@@ -23,8 +23,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder>
 {
     private List<Messages> userMessagesList;
@@ -66,7 +64,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.activity_message, viewGroup, false);
+                .inflate(R.layout.custom_messages_layout, viewGroup, false);
 
         mAuth = FirebaseAuth.getInstance();
 
