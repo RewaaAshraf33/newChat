@@ -52,7 +52,7 @@ public class ChatActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private DatabaseReference RootRef;
 
-    private ImageButton SendMessageButton, SendFilesButton;
+    private ImageButton SendMessageButton;
     private EditText MessageInputText;
 
     private final List<Messages> messagesList = new ArrayList<>();
