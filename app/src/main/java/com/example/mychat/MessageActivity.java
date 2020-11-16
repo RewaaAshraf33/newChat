@@ -56,7 +56,7 @@ public class MessageActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         btn_send = findViewById(R.id.send_message_btn);
         text_send = findViewById(R.id.input_message);
-        //msg_editText = findViewById(R.id.sender_messsage_text);
+
         intent=getIntent();
 
 
@@ -76,6 +76,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Users user =dataSnapshot .getValue(Users.class);
                 username.setText(user.getUsername());
+
 
                 if (true)
                 {
