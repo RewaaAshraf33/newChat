@@ -226,8 +226,7 @@ public class ChatActivity extends AppCompatActivity
 
 
 
-    private void SendMessage()
-    {
+    private void SendMessage() {
         String messageText = MessageInputText.getText().toString();
 
         if (TextUtils.isEmpty(messageText))

@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MessageActivity extends AppCompatActivity {
@@ -77,14 +78,14 @@ public class MessageActivity extends AppCompatActivity {
                 Users user =dataSnapshot .getValue(Users.class);
                 username.setText(user.getUsername());
 
-                //if (user.getImageURL().equals("default"))
-                //{
-                //    imageView.setImageResource(R.mipmap.ic_launcher);
+                if (user.getImageURL().equals("default"))
+                {
+                    imageView.setImageResource(R.mipmap.ic_launcher);
 
-                //}else {
+                }else {
 
-                 //   Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
-                 //}
+                    Glide.with(MessageActivity.this).load(user.getImageURL()).into(imageView);
+                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -117,4 +118,8 @@ public class MessageActivity extends AppCompatActivity {
         reference.child("Chats").push().setValue(hashMap);
     }
 
+      //private void readMessages(String sender, String receiver, String message){
+       //Chat = new ArrayList<>();
+       //reference = FirebaseDatabase.getInstance().getReference(ChatActivity);
+    //}
 }
